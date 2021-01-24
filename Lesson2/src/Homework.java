@@ -16,7 +16,7 @@ public class Homework {
      * 2. (optional) if sum of a and b is more then int can store -- return -1;
      **/
     public static int sum(int a, int b) {
-        return (a + b < 0 ? -1 : a + b);
+        return ((long)a + b > Integer.MAX_VALUE ? -1 : a + b);
     }
 
     /**
@@ -84,6 +84,6 @@ public class Homework {
      */
     public static double calculateHypotenuse() {
         Scanner consoleIn = new Scanner(System.in);
-        return Math.hypot(Double.valueOf(consoleIn.next()), Double.valueOf(consoleIn.next()));
+        return Math.hypot(consoleIn.nextDouble(), consoleIn.nextDouble());
     }
 }
