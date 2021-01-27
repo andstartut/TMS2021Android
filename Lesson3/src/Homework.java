@@ -76,14 +76,14 @@ public class Homework {
             int[][] matrix = new int[height][width];
             for (int i = 0; i < matrix.length; i++) {
                 for (int j = 0; j < matrix[i].length; j++) {
-                    matrix[i][j] = random.nextInt(100);
+                    matrix[i][j] = 21/*random.nextInt(100)*/;
                 }
             }
             for (int[] row : matrix) {
                 for (int element : row) {
-                    if (element % 3 == 0 && element % 7 == 0) {
+                    if ((element % 3 == 0 & element % 7 == 0) || element % 3 == 0) {
                         System.out.print("+ ");
-                    } else if (element % 3 != 0 & element % 7 == 0) {
+                    } else if (element % 7 == 0) {
                         System.out.print("- ");
                     } else {
                         System.out.print("* ");
@@ -102,8 +102,13 @@ public class Homework {
      */
     public static void printPrimeNumbers() {
         for (int i = 2; i < 1000; i++) {
-            if (i == 2 || i == 3 || i == 5 ||
-                    (i % 2 != 0) & (i % 3 != 0) & (i % 5 != 0)) {
+            int count = 0;
+            for (int j = 2; j <= i; j++) {
+                if (i % j == 0) {
+                    count++;
+                }
+            }
+            if (count < 2) {
                 System.out.print(i + " ");
             }
         }
