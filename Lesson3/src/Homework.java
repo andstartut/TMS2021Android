@@ -76,12 +76,12 @@ public class Homework {
             int[][] matrix = new int[height][width];
             for (int i = 0; i < matrix.length; i++) {
                 for (int j = 0; j < matrix[i].length; j++) {
-                    matrix[i][j] = 21/*random.nextInt(100)*/;
+                    matrix[i][j] = random.nextInt(100);
                 }
             }
             for (int[] row : matrix) {
                 for (int element : row) {
-                    if ((element % 3 == 0 & element % 7 == 0) || element % 3 == 0) {
+                    if (element % 3 == 0) {
                         System.out.print("+ ");
                     } else if (element % 7 == 0) {
                         System.out.print("- ");
