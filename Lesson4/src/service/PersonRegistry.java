@@ -3,6 +3,7 @@ package service;
 import model.Address;
 import model.Person;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class PersonRegistry {
@@ -33,11 +34,19 @@ public class PersonRegistry {
         return i;
     }
 
-    public List<Person> getCitizens() {
-        return citizens;
+    public List<Person> getPeople(Address address) {
+        List<Person> people = new LinkedList<>();
+        for (Person person : citizens) {
+            Address personsAddress = person.getAddress();
+            if (personsAddress.getCountry().equals(address.getCountry())
+                    && personsAddress.getCity().equals(address.getCity())) {
+                people.add(person);
+            }
+        }
+        return people;
     }
 
-    public void setCitizens(List<Person> citizens) {
-        this.citizens = citizens;
+    public List<Person> getCitizens() {
+        return citizens;
     }
 }
