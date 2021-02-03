@@ -2,8 +2,6 @@ package service;
 
 import model.Person;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MilitaryOffice {
