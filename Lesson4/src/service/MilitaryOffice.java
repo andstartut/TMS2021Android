@@ -1,29 +1,44 @@
 package service;
 
 import model.Person;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MilitaryOffice {
-    private List<Person> people;
-    private Person person;
-    public MilitaryOffice(List<Person> people) {
-        this.people = people;
+    private PersonRegistry personRegistry;
+    List<Person> registry;
+
+    public MilitaryOffice(PersonRegistry personRegistry) {
+        this.personRegistry = personRegistry;
+        registry = personRegistry.getCitizens();
     }
 
-    public MilitaryOffice(Person person) {
-        this.person = person;
-    }
-
-    public void info() {
+    public String suitable() {
+        StringBuilder names = new StringBuilder();
         System.out.println("who is fit for the army: ");
-        for (Person person : people) {
-            if (person.getSex().equals("man")) {
-                if (person.getAge() > 17 & person.getAge() < 28) {
-                    if (person.getCountry().equals("Belarus")) {
-                        System.out.println(person.getName());
-                    }
-                }
+        for (Person person : registry) {
+            if (person.getAddress().getCountry().equals("Belarus") &&
+                    person.getSex().equals("man") &&
+                    person.getAge() > 17 && person.getAge() < 28) {
+                names.append(person.getName()).append("\n");
             }
         }
+        return names.toString();
+    }
+
+    public String suitableToHeight(Integer height) {
+        StringBuilder names = new StringBuilder();
+        System.out.println("who is fit for the army with a height of more than: ");
+        for (Person person : registry) {
+            if (person.getAddress().getCountry().equals("Belarus") &&
+                    person.getSex().equals("man") &&
+                    person.getAge() > 17 && person.getAge() < 28 &&
+                    person.getHeight() >= height) {
+                names.append(person.getName()).append("\n");
+            }
+        }
+        return names.toString();
     }
 }
