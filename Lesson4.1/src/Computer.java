@@ -5,13 +5,8 @@ public class Computer {
     private final String SSD = "512GB";
     private final String RAM = "8GB";
     private int countLifeCycle = 10;
-    private int randomNumber;
     private ComputerCondition computerCondition;
     Random random = new Random();
-
-    public Computer() {
-        randomNumber = random.nextInt(2);
-    }
 
     {
         computerCondition = ComputerCondition.STATE_OFF;
@@ -23,7 +18,7 @@ public class Computer {
                 System.out.println("Computer are working");
                 break;
             case STATE_OFF:
-                if (countLifeCycle > 0 && randomNumber == integer) {
+                if (countLifeCycle > 0 && random.nextInt(2) == integer) {
                     computerCondition = ComputerCondition.STATE_ON;
                     System.out.println("Computer ON");
                 } else {
@@ -40,7 +35,7 @@ public class Computer {
     public void turnOff(Integer integer) {
         switch (computerCondition) {
             case STATE_ON:
-                if (countLifeCycle > 0 && randomNumber == integer) {
+                if (countLifeCycle > 0 && random.nextInt(2) == integer) {
                     countLifeCycle--;
                     computerCondition = ComputerCondition.STATE_OFF;
                     System.out.println("Computer OFF");
@@ -60,10 +55,6 @@ public class Computer {
 
     public ComputerCondition getComputerStatus() {
         return computerCondition;
-    }
-
-    public int getRandomNumber() {
-        return randomNumber;
     }
 
     public String info() {
