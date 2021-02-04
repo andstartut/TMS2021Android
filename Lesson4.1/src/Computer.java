@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Computer {
     private final String CPU = "AMD 4GHz 8 core";
@@ -7,18 +8,20 @@ public class Computer {
     private int countLifeCycle = 10;
     private ComputerCondition computerCondition;
     Random random = new Random();
+    Scanner scanner = new Scanner(System.in);
 
     {
         computerCondition = ComputerCondition.STATE_OFF;
     }
 
-    public void turnOn(Integer integer) {
+    public void turnOn() {
+        System.out.println("Input 0 or 1:");
         switch (computerCondition) {
             case STATE_ON:
                 System.out.println("Computer are working");
                 break;
             case STATE_OFF:
-                if (countLifeCycle > 0 && random.nextInt(2) == integer) {
+                if (countLifeCycle > 0 && random.nextInt(2) == scanner.nextInt()) {
                     computerCondition = ComputerCondition.STATE_ON;
                     System.out.println("Computer ON");
                 } else {
@@ -32,10 +35,11 @@ public class Computer {
         }
     }
 
-    public void turnOff(Integer integer) {
+    public void turnOff() {
+        System.out.println("Input 0 or 1:");
         switch (computerCondition) {
             case STATE_ON:
-                if (countLifeCycle > 0 && random.nextInt(2) == integer) {
+                if (countLifeCycle > 0 && random.nextInt(2) == scanner.nextInt()) {
                     countLifeCycle--;
                     computerCondition = ComputerCondition.STATE_OFF;
                     System.out.println("Computer OFF");
