@@ -26,7 +26,7 @@ public class Main {
 //        }
         List<MilitaryBase> militaryBaseList = new ArrayList<>();
         PersonRegistry registry = new PersonRegistry(citizens);
-        MilitaryBase militaryBase3214 = new MilitaryBase(5);
+        MilitaryBase militaryBase3214 = new MilitaryBase(2);
         militaryBaseList.add(militaryBase3214);
         MilitaryBase militaryBase7434 = new MilitaryBase(10);
         militaryBaseList.add(militaryBase7434);

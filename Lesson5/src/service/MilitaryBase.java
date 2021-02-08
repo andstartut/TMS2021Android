@@ -15,10 +15,14 @@ public class MilitaryBase {
     }
 
     public int getAvailablePlaces() {
+        if (maxSolders < recruits.size()) {
+            return 0;
+        }
         return maxSolders - recruits.size();
     }
 
     private void checkForTheMatchingRecruits(List<Person> fitForArmy) {
+        boolean notInTheArmy = true;
         for (Person person : fitForArmy) {
             for (Person recruit : recruits) {
                 if (person == recruit ||
@@ -26,10 +30,12 @@ public class MilitaryBase {
                                 person.getAge().equals(recruit.getAge()) &&
                                 person.getHeight().equals(recruit.getHeight())) {
                     System.out.println(person.getName() + " are serving in the army now");
-                } else {
-                    addSolder(person);
+                    notInTheArmy = false;
+                    break;
                 }
-
+            }
+            if (notInTheArmy) {
+                addSolder(person);
             }
         }
     }
@@ -52,8 +58,10 @@ public class MilitaryBase {
                     System.out.println("The Military Base is full");
                 }
             } else {
-                for (Person person : healthyPeople) {
-                    addSolder(person);
+                for (int i = 0; i < maxSolders; i++) {
+                    if (i < healthyPeople.size()) {
+                        addSolder(healthyPeople.get(i));
+                    }
                 }
             }
         }

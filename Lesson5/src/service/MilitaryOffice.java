@@ -56,30 +56,32 @@ public class MilitaryOffice {
                 for (int i = 0; i < militaryBase.getAvailablePlaces(); i++) {
                     if (i < fitPeople.size()) {
                         peopleForMilitaryBase.add(fitPeople.get(i));
-                    }else{
+                    } else {
                         break;
                     }
                 }
             }
-        }else{
+        } else {
             System.out.println("There are more people than the right places");
         }
     }
 
     public void addFitPeopleToTheUnits(String country) {
+        int countPeople = 0;
         List<Person> fitPeople = getHealthyPeople(country);
         List<Person> peopleForMilitaryBase = new ArrayList<>();
         if (fitPeople.size() < getCountTheNeededPeople()) {
             for (MilitaryBase militaryBase : militaryBaseList) {
                 for (int i = 0; i < militaryBase.getAvailablePlaces(); i++) {
                     if (i < fitPeople.size()) {
-                        peopleForMilitaryBase.add(fitPeople.get(i));
-                    }else{
+                        peopleForMilitaryBase.add(fitPeople.get(countPeople));
+                        countPeople++;
+                    } else {
                         break;
                     }
                 }
             }
-        }else{
+        } else {
             System.out.println("There are more people than the right places");
         }
     }
