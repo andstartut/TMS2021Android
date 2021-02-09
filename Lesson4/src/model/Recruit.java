@@ -1,6 +1,4 @@
-package src.model;
-
-import model.Person;
+package model;
 
 public class Recruit extends Person{
     private String rank;

@@ -1,6 +1,8 @@
 package model;
 
-public class Person {
+import interfaces.Speaker;
+
+public class Person implements Speaker {
     private Integer age;
     private String name;
     private String sex;
@@ -8,10 +10,10 @@ public class Person {
     private Address address;
 
     public Person(String sex, Integer age, String name, Integer height) {
-        setHeight(height);
-        setAge(age);
-        setName(name);
-        setSex(sex);
+        this.age = age;
+        this.sex = sex;
+        this.name = name;
+        this.height = height;
     }
 
     public Person(Integer age, String name) {
@@ -69,23 +71,17 @@ public class Person {
         return address;
     }
 
+
     @Override
-    public String toString() {
-        if (!address.getCountry().equals("")) {
-            return "Person{" +
-                    "age=" + age +
-                    ", name='" + name + '\'' +
-                    ", sex='" + sex + '\'' +
-                    ", height=" + height +
-                    ", " + address.toString() +
-                    '}';
-        } else {
-            return "Person{" +
-                    "age=" + age +
-                    ", name='" + name + '\'' +
-                    ", sex='" + sex + '\'' +
-                    ", height=" + height +
-                    '}';
-        }
+    public void speak() {
+        System.out.println(
+                "Person{" +
+                "age=" + age +
+                ", name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
+                ", height=" + height +
+                '}'
+        );
     }
+
 }
