@@ -1,4 +1,4 @@
-package interfaces;
+package src.interfaces;
 
 import model.Address;
 import model.Person;
