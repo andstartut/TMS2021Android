@@ -1,6 +1,7 @@
-package model;
+package src.model;
 
 import interfaces.Speaker;
+import model.Address;
 
 public class Person implements Speaker {
     private Integer age;

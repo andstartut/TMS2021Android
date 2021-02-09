@@ -1,8 +1,8 @@
-package service;
+package src.service;
 
 import model.Address;
 import model.Person;
-import model.Recruit;
+import service.PersonRegistry;
 
 import java.util.ArrayList;
 import java.util.List;

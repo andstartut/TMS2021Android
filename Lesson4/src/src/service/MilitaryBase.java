@@ -1,4 +1,4 @@
-package service;
+package src.service;
 
 import model.Person;
 import model.Recruit;
