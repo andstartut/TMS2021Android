@@ -1,8 +1,10 @@
-public abstract class groundTransport extends Transport {
+package transport;
+
+public abstract class GroundTransport extends Transport {
     private int countOfWheels;
     private float fuelConsumption;
 
-    public groundTransport(int power, int maxSpeed, int weight, String brand, int countOfWheels, float fuelConsumption) {
+    public GroundTransport(int power, int maxSpeed, int weight, String brand, int countOfWheels, float fuelConsumption) {
         super(power, maxSpeed, weight, brand);
         this.countOfWheels = countOfWheels;
         this.fuelConsumption = fuelConsumption;

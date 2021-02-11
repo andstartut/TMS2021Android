@@ -1,3 +1,5 @@
+package enums;
+
 public enum CarBody {
     SEDAN (5),
     WAGON(7),

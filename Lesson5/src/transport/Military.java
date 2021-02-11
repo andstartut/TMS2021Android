@@ -1,4 +1,6 @@
-public class Military extends airTransport {
+package transport;
+
+public class Military extends AirTransport {
     private boolean ejectSystem;
     private int countOfMissiles;
 
@@ -35,6 +37,7 @@ public class Military extends airTransport {
     public void ejectSystem() {
         if (ejectSystem) {
             System.out.println("The eject was successful");
+            countOfMissiles--;
         }else {
             System.out.println("You haven't this system");
         }
@@ -42,7 +45,7 @@ public class Military extends airTransport {
 
     @Override
     public String toString() {
-        return "Military aircraft specifications: " +
+        return "transport.Military aircraft specifications: " +
                 "ejectSystem=" + ejectSystem +
                 ", countOfMissiles=" + countOfMissiles +
                 ", brand='" + super.getBrand() + '\'' +

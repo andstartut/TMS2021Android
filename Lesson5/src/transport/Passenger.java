@@ -1,4 +1,6 @@
-public class Passenger extends airTransport {
+package transport;
+
+public class Passenger extends AirTransport {
     private int passengerCapacity;
     private boolean businessClass;
 
@@ -32,7 +34,7 @@ public class Passenger extends airTransport {
 
     @Override
     public String toString() {
-        return "Passenger aircraft specifications: " +
+        return "transport.Passenger aircraft specifications: " +
                 "passengerCapacity=" + passengerCapacity +
                 ", businessClass=" + businessClass +
                 ", brand='" + super.getBrand() + '\'' +

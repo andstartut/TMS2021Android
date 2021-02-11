@@ -1,3 +1,9 @@
+import enums.CarBody;
+import transport.Car;
+import transport.Military;
+import transport.Passenger;
+import transport.Truck;
+
 public class Main {
     public static void main(String[] args) {
         Car audi100 = new Car(

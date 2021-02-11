@@ -1,3 +1,5 @@
+package transport;
+
 public abstract class Transport {
     private int power; // hp
     private int maxSpeed; // km/h

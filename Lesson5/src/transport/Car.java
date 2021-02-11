@@ -1,4 +1,10 @@
-public class Car extends groundTransport {
+package transport;
+
+import enums.CarBody;
+
+import static enums.CarBody.*;
+
+public class Car extends GroundTransport {
     private int capacity;
     private CarBody carBody;
 
@@ -15,19 +21,19 @@ public class Car extends groundTransport {
     public void setCapacity() {
         switch (carBody) {
             case SEDAN:
-                this.capacity = CarBody.SEDAN.getCapacitty();
+                this.capacity = SEDAN.getCapacitty();
                 break;
             case WAGON:
-                this.capacity = CarBody.WAGON.getCapacitty();
+                this.capacity = WAGON.getCapacitty();
                 break;
             case PICKUP:
-                this.capacity = CarBody.PICKUP.getCapacitty();
+                this.capacity = PICKUP.getCapacitty();
                 break;
             case CABRIOLET:
-                this.capacity = CarBody.CABRIOLET.getCapacitty();
+                this.capacity = CABRIOLET.getCapacitty();
                 break;
             case COUPE:
-                this.capacity = CarBody.COUPE.getCapacitty();
+                this.capacity = COUPE.getCapacitty();
                 break;
         }
 
@@ -43,18 +49,22 @@ public class Car extends groundTransport {
 
     public void getMaxDistance(float time) {
         float maxDistance = getMaxSpeed() * time;
-        float fuelSpend = (maxDistance * getFuelConsumption()) / 100;
         System.out.println("За время " + time +
                 " ч, автомобиль " + getBrand() +
                 " двигаясь с максимальной скоростью " + getMaxSpeed() +
                 " км/ч проедет " + maxDistance +
-                " км и израсходует " + fuelSpend +
-                " литров топлива.");
+                " км и израсходует " + fuelSpend(maxDistance) +
+                " литров топлива."
+        );
+    }
+
+    private float fuelSpend(float maxDistance) {
+        return (maxDistance * getFuelConsumption()) / 100;
     }
 
     @Override
     public String toString() {
-        return "Car specifications : " +
+        return "transport.Car specifications : " +
                 "capacity=" + capacity +
                 ", body='" + carBody + '\'' +
                 ", brand='" + super.getBrand() + '\'' +

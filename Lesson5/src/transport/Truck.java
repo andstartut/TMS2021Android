@@ -1,4 +1,6 @@
-public class Truck extends groundTransport {
+package transport;
+
+public class Truck extends GroundTransport {
     private float payload;
 
     public Truck(int power, int maxSpeed, int weight, String brand, float payload, int countOfWheels, float fuelConsumption) {
@@ -24,7 +26,7 @@ public class Truck extends groundTransport {
 
     @Override
     public String toString() {
-        return "Truck specifications : " +
+        return "transport.Truck specifications : " +
                 "payload=" + payload + "t" +
                 ", brand='" + super.getBrand() + '\'' +
                 ", max speed='" + super.getMaxSpeed() + "km/h" + '\'' +
