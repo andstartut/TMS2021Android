@@ -1,49 +1,56 @@
-import model.Address;
-import model.ImportData;
-import model.Person;
-import model.Recruit;
-import interfaces.Speaker;
-import service.MilitaryBase;
-import service.MilitaryOffice;
-import service.PersonRegistry;
-
-import java.util.ArrayList;
-import java.util.List;
+import enums.CarBody;
+import transport.Car;
+import transport.Military;
+import transport.Passenger;
+import transport.Truck;
 
 public class Main {
     public static void main(String[] args) {
-//        List<Person> citizens = new ImportData().createCitizens(5);
-        List<Person> citizens = new ImportData().createCitizens();
+        Car audi100 = new Car(
+                100,
+                230,
+                1500,
+                "Audi",
+                4,
+                8,
+                CarBody.SEDAN);
+        System.out.println(audi100.toString());
+        audi100.getMaxDistance(2.5F);
 
-//        Recruit recruit = new Recruit("man", 20, "Ivan", 185, "General");
-//        recruit.setRank("Private");
-//        System.out.println(recruit.getRank());
-//        Person anotherRecruit = new Recruit("man", 18, "Gleb", 180, "Private");
-//        anotherRecruit.speak();
+        Truck iveco = new Truck(
+                100,
+                120,
+                2500,
+                "Iveco",
+                3,
+                6,
+                20
+        );
+        iveco.weightIs(5);
 
-//        for (Person person : citizens) {
-//            System.out.println(person);
-//        }
-        List<MilitaryBase> militaryBaseList = new ArrayList<>();
-        PersonRegistry registry = new PersonRegistry(citizens);
-        MilitaryBase militaryBase3214 = new MilitaryBase(2);
-        militaryBaseList.add(militaryBase3214);
-        MilitaryBase militaryBase7434 = new MilitaryBase(10);
-        militaryBaseList.add(militaryBase7434);
-        MilitaryOffice militaryOffice = new MilitaryOffice(registry, militaryBaseList);
+        Passenger boeing737NG = new Passenger(
+                7000,
+                900,
+                10000,
+                "Boeing",
+                5,
+                34,
+                100,
+                false
+        );
+        boeing737NG.passengersAre(121);
 
-        List<Person> fitPeople = militaryOffice.getHealthyPeople("Belarus");
-        System.out.println(fitPeople);
-
-        militaryBase3214.setRecruits(fitPeople);
-        for (Recruit recruit : militaryBase3214.getRecruits()) {
-            System.out.println(recruit.toString());
-        }
-        militaryBase7434.setRecruits(fitPeople);
-        for (Recruit recruit : militaryBase7434.getRecruits()) {
-            System.out.println(recruit.toString());
-        }
-
-        militaryOffice.addFitPeopleToTheUnits("Belarus");
+        Military f22 = new Military(
+                10000,
+                2400,
+                6,
+                "Lockheed Martin",
+                1,
+                14,
+                true,
+                4
+        );
+        f22.fire();
+        f22.ejectSystem();
     }
 }

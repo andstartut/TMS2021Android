@@ -1,8 +1,6 @@
-package src.model;
+package model;
 
 import interfaces.IImportData;
-import model.Address;
-import model.Person;
 
 import java.util.ArrayList;
 import java.util.List;
