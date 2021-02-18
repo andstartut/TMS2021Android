@@ -1,12 +1,10 @@
 package by.teachmeskills.robot;
 
-import by.teachmeskills.robot.hands.SamsungHand;
-import by.teachmeskills.robot.hands.SonyHand;
-import by.teachmeskills.robot.heads.SamsungHead;
-import by.teachmeskills.robot.heads.SonyHead;
-import by.teachmeskills.robot.heads.ToshibaHead;
-import by.teachmeskills.robot.legs.SonyLeg;
-import by.teachmeskills.robot.legs.ToshibaLeg;
+import by.teachmeskills.robot.enums.PartsAndPrices;
+import by.teachmeskills.robot.factory.*;
+import by.teachmeskills.robot.interfaces.IRobotPart;
+import by.teachmeskills.robot.interfaces.IRobotPartFactory;
+import by.teachmeskills.robot.parts.RobotPart;
 
 public class Run {
 
@@ -19,20 +17,20 @@ public class Run {
         У всех роботов вызовите метод action.
         Среди 3-х роботов найдите самого дорогого.
         */
-        Robot horizont = new Robot(new SonyHead(2000), new SamsungHand(1500), new ToshibaLeg(1700));
-        Robot vityaz = new Robot(new SamsungHead(2100), new SamsungHand(1300), new SonyLeg(1500));
-        Robot integral = new Robot(new ToshibaHead(1800), new SonyHand(1700), new ToshibaLeg(1900));
 
-        horizont.action();
-        vityaz.action();
-        integral.action();
+        IRobotPartFactory partFactory = new RandomRobotPartFactory();
 
-        if (horizont.getPrice() > vityaz.getPrice() & horizont.getPrice() > integral.getPrice()) {
-            System.out.println("The Horizont is the most expensive robot");
-        } else if (vityaz.getPrice() > horizont.getPrice() & vityaz.getPrice() > integral.getPrice()) {
-            System.out.println("The Vityaz is the most expensive robot");
-        } else if (integral.getPrice() > horizont.getPrice() & integral.getPrice() > vityaz.getPrice()) {
-            System.out.println("The Integral is the most expensive robot");
+        RobotFactory robotFactory = new RobotFactory(partFactory);
+
+        Robot r1 = robotFactory.createRobot();
+        Robot r2 = robotFactory.createRobot();
+        Robot r3 = robotFactory.createRobot();
+
+        Robot[] robots = {r1,r2,r3};
+        for (Robot r : robots) {
+            r.action();
         }
+
+        new RobotPrice(robots).findTheMostExpensive();
     }
 }

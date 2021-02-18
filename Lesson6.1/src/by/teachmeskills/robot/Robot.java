@@ -1,51 +1,36 @@
 package by.teachmeskills.robot;
 
-import by.teachmeskills.robot.hands.IHand;
-import by.teachmeskills.robot.heads.IHead;
-import by.teachmeskills.robot.legs.ILeg;
+import by.teachmeskills.robot.interfaces.IRobot;
+import by.teachmeskills.robot.interfaces.IRobotPart;
 
 public class Robot implements IRobot {
-    private IHead head;
-    private IHand hand;
-    private ILeg leg;
+    private IRobotPart head;
+    private IRobotPart hand;
+    private IRobotPart leg;
 
-    public Robot(IHead head, IHand hand, ILeg leg) {
+    public Robot(IRobotPart head, IRobotPart hand, IRobotPart leg) {
         this.head = head;
         this.hand = hand;
         this.leg = leg;
     }
 
-    public Robot(){}
-
-    public IHead getHead() {
+    public IRobotPart getHead() {
         return head;
     }
 
-    public void setHead(IHead head) {
-        this.head = head;
-    }
-
-    public IHand getHand() {
+    public IRobotPart getHand() {
         return hand;
     }
 
-    public void setHand(IHand hand) {
-        this.hand = hand;
-    }
-
-    public ILeg getLeg() {
+    public IRobotPart getLeg() {
         return leg;
-    }
-
-    public void setLeg(ILeg leg) {
-        this.leg = leg;
     }
 
     @Override
     public void action() {
-        head.speak();
-        hand.upHand();
-        leg.step();
+        head.info();
+        hand.info();
+        leg.info();
     }
 
     /**
@@ -54,7 +39,15 @@ public class Robot implements IRobot {
      */
     @Override
     public int getPrice() {
-        int price = head.getPrice() + hand.getPrice() + leg.getPrice();
-        return price;
+        return head.getPrice() + hand.getPrice() + leg.getPrice();
+    }
+
+    @Override
+    public String toString() {
+        return "Robot{" +
+                "head=" + head.getBrandName() +
+                ", hand=" + hand.getBrandName() +
+                ", leg=" + leg.getBrandName() +
+                '}';
     }
 }
