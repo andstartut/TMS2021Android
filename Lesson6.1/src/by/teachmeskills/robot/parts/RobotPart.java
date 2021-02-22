@@ -7,6 +7,7 @@ import by.teachmeskills.robot.interfaces.IRobotPart;
 public class RobotPart implements IRobotPart {
     private PartsAndPrices part;
     private BrandsAndMarkupIndex brand;
+    private RobotNameUtil utils = new RobotNameUtil();
 
     public RobotPart(PartsAndPrices part, BrandsAndMarkupIndex brand) {
         this.part = part;
@@ -15,7 +16,7 @@ public class RobotPart implements IRobotPart {
 
     @Override
     public void info() {
-        System.out.println(getPartName() + "'s " + getBrandName() + " is moved");
+        System.out.println(utils.partOperation(getPartName(),getBrandName()));
     }
 
     @Override
@@ -25,25 +26,11 @@ public class RobotPart implements IRobotPart {
 
     @Override
     public final String getBrandName() {
-        return convertingConstantToName(brand.name());
+        return utils.convertingConstantToName(brand.name());
     }
 
     @Override
     public final String getPartName() {
-        return convertingConstantToName(part.name());
-    }
-
-    /**
-     * Getting a beautiful name using String and StringBuilder.
-     * Maybe I need to move this method to another class?
-     */
-    private String convertingConstantToName(String constantName) {
-        StringBuilder name = new StringBuilder();
-        String[] nameArray = constantName.toLowerCase().split("");
-        nameArray[0] = nameArray[0].toUpperCase();
-        for (String letter : nameArray) {
-            name.append(letter);
-        }
-        return name.toString();
+        return utils.convertingConstantToName(part.name());
     }
 }

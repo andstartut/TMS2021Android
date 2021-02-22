@@ -8,8 +8,6 @@ import by.teachmeskills.robot.parts.RobotPart;
 
 import java.util.Random;
 
-import static by.teachmeskills.robot.enums.BrandsAndMarkupIndex.*;
-
 public final class RandomRobotPartFactory implements IRobotPartFactory {
     private BrandsAndMarkupIndex brand = null;
     private static final int ENUM_LENGTH = BrandsAndMarkupIndex.values().length;
@@ -21,13 +19,7 @@ public final class RandomRobotPartFactory implements IRobotPartFactory {
     }
 
     private BrandsAndMarkupIndex selectBrand() {
-        switch (random.nextInt(ENUM_LENGTH)) {
-            case 0 -> brand = SAMSUNG;
-
-            case 1 -> brand = SONY;
-
-            case 2 -> brand = TOSHIBA;
-        }
-        return brand;
+        return BrandsAndMarkupIndex.values()[random.nextInt(ENUM_LENGTH)];
     }
+
 }
