@@ -2,10 +2,13 @@ package service;
 
 import exceptions.MatchingPersonException;
 import exceptions.MilitaryBaseOverflowException;
+import exceptions.SurNameException;
+import interfaces.IPerson;
 import model.Person;
 import model.Recruit;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class MilitaryBase {
@@ -29,25 +32,30 @@ public class MilitaryBase {
             for (Person recruit : recruits) {
                 if (person == recruit ||
                         person.getName().equals(recruit.getName()) &&
-                                person.getAge().equals(recruit.getAge()) &&
-                                person.getHeight().equals(recruit.getHeight())) {
-                    notInTheArmy = false;
+                                person.getAge() == recruit.getAge() &&
+                                person.getHeight() == recruit.getHeight()) {
                     throw new MatchingPersonException(person.getName() + " are serving in the army now");
                 }
+                if (notInTheArmy) {
+                    addSolder(person);
+                }
             }
-            if (notInTheArmy) {
-                addSolder(person);
-            }
+
         }
     }
 
-    private void addSolder(Person person) {
-        recruits.add(new Recruit(
-                person.getName(),
-                person.getAge(),
-                person.getSex(),
-                person.getHeight(),
-                "Private"));
+    private void addSolder(IPerson person) {
+        try {
+            recruits.add(new Recruit(
+                    person.getSex(),
+                    person.getAge(),
+                    person.getName(),
+                    person.getSurname(),
+                    person.getHeight(),
+                    "Private"));
+        } catch (SurNameException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setRecruits(List<Person> healthyPeople) throws MilitaryBaseOverflowException {
@@ -74,5 +82,12 @@ public class MilitaryBase {
 
     public List<Recruit> getRecruits() {
         return recruits;
+    }
+
+    public void getSurnamesInAlphabeticalOrder() {
+        recruits.sort(Comparator.comparing(Recruit::getSurname));
+        for (Recruit recruit : recruits) {
+            System.out.println(recruit.getSurname() + ", " + recruit.getName());
+        }
     }
 }
