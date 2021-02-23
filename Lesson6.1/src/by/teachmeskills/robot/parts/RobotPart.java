@@ -15,7 +15,7 @@ public class RobotPart implements IRobotPart {
 
     @Override
     public void info() {
-        System.out.println(RobotNameUtil.partOperation(getPartName(),getBrandName()));
+        System.out.println(RobotPartUtil.partOperation(getPartName(),getBrandName()));
     }
 
     @Override
@@ -25,11 +25,11 @@ public class RobotPart implements IRobotPart {
 
     @Override
     public final String getBrandName() {
-        return RobotNameUtil.convertingConstantToName(brand.name());
+        return RobotPartUtil.convertingConstantToName(brand.name());
     }
 
     @Override
     public final String getPartName() {
-        return RobotNameUtil.convertingConstantToName(part.name());
+        return RobotPartUtil.convertingConstantToName(part.name());
     }
 }
