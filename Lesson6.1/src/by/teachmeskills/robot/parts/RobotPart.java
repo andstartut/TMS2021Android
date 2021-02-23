@@ -7,7 +7,7 @@ import by.teachmeskills.robot.interfaces.IRobotPart;
 public class RobotPart implements IRobotPart {
     private PartsAndPrices part;
     private BrandsAndMarkupIndex brand;
-    private RobotNameUtil utils = new RobotNameUtil();
+    private RobotPartUtil utils = new RobotPartUtil();
 
     public RobotPart(PartsAndPrices part, BrandsAndMarkupIndex brand) {
         this.part = part;
