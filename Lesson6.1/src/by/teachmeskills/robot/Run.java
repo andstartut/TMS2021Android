@@ -1,6 +1,7 @@
 package by.teachmeskills.robot;
 
 import by.teachmeskills.robot.enums.PartsAndPrices;
+import by.teachmeskills.robot.exceptions.CreateRobotPartException;
 import by.teachmeskills.robot.factory.*;
 import by.teachmeskills.robot.interfaces.IRobotPartFactory;
 import by.teachmeskills.robot.parts.RobotPart;
@@ -21,9 +22,16 @@ public class Run {
 
         RobotFactory robotFactory = new RobotFactory(partFactory);
 
-        Robot r1 = robotFactory.createRobot();
-        Robot r2 = robotFactory.createRobot();
-        Robot r3 = robotFactory.createRobot();
+        Robot r1 = null;
+        Robot r2 = null;
+        Robot r3 = null;
+        try {
+            r1 = robotFactory.createRobot();
+            r2 = robotFactory.createRobot();
+            r3 = robotFactory.createRobot();
+        }catch (CreateRobotPartException e) {
+            System.out.println("The robot not created");
+        }
 
         Robot[] robots = {r1,r2,r3};
         for (Robot r : robots) {

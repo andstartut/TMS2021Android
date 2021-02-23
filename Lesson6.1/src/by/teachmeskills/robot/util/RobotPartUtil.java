@@ -1,4 +1,4 @@
-package by.teachmeskills.robot.parts;
+package by.teachmeskills.robot.util;
 
 public class RobotPartUtil {
 

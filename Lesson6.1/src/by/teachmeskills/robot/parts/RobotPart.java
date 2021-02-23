@@ -3,6 +3,7 @@ package by.teachmeskills.robot.parts;
 import by.teachmeskills.robot.enums.BrandsAndMarkupIndex;
 import by.teachmeskills.robot.enums.PartsAndPrices;
 import by.teachmeskills.robot.interfaces.IRobotPart;
+import by.teachmeskills.robot.util.RobotPartUtil;
 
 public class RobotPart implements IRobotPart {
     private PartsAndPrices part;
