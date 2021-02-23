@@ -7,7 +7,6 @@ import by.teachmeskills.robot.interfaces.IRobotPart;
 public class RobotPart implements IRobotPart {
     private PartsAndPrices part;
     private BrandsAndMarkupIndex brand;
-    private RobotNameUtil utils = new RobotNameUtil();
 
     public RobotPart(PartsAndPrices part, BrandsAndMarkupIndex brand) {
         this.part = part;
@@ -16,7 +15,7 @@ public class RobotPart implements IRobotPart {
 
     @Override
     public void info() {
-        System.out.println(utils.partOperation(getPartName(),getBrandName()));
+        System.out.println(RobotNameUtil.partOperation(getPartName(),getBrandName()));
     }
 
     @Override
@@ -26,11 +25,11 @@ public class RobotPart implements IRobotPart {
 
     @Override
     public final String getBrandName() {
-        return utils.convertingConstantToName(brand.name());
+        return RobotNameUtil.convertingConstantToName(brand.name());
     }
 
     @Override
     public final String getPartName() {
-        return utils.convertingConstantToName(part.name());
+        return RobotNameUtil.convertingConstantToName(part.name());
     }
 }

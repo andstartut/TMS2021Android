@@ -4,7 +4,7 @@ import by.teachmeskills.robot.enums.PartsAndPrices;
 
 public class RobotNameUtil {
 
-    public final String convertingConstantToName(String constantName) {
+    public static String convertingConstantToName(String constantName) {
         StringBuilder name = new StringBuilder();
         String[] nameArray = constantName.toLowerCase().split("");
         nameArray[0] = nameArray[0].toUpperCase();
@@ -14,7 +14,7 @@ public class RobotNameUtil {
         return name.toString();
     }
 
-    public final String partOperation(String partName, String brandName) {
+    public static String partOperation(String partName, String brandName) {
         String string = "";
         switch (partName) {
             case "Leg" -> string = "The " + partName + "'s " + brandName + " goes";
