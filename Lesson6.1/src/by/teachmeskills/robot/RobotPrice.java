@@ -1,5 +1,7 @@
 package by.teachmeskills.robot;
 
+import by.teachmeskills.robot.factory.Robot;
+
 public class RobotPrice {
     private Robot[] robots;
 

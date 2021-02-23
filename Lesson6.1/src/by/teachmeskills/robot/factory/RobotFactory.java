@@ -1,6 +1,5 @@
 package by.teachmeskills.robot.factory;
 
-import by.teachmeskills.robot.Robot;
 import by.teachmeskills.robot.enums.PartsAndPrices;
 import by.teachmeskills.robot.interfaces.IRobotFactory;
 import by.teachmeskills.robot.interfaces.IRobotPartFactory;

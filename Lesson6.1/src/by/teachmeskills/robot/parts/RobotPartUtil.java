@@ -1,8 +1,6 @@
 package by.teachmeskills.robot.parts;
 
-import by.teachmeskills.robot.enums.PartsAndPrices;
-
-public class RobotNameUtil {
+public class RobotPartUtil {
 
     public static String convertingConstantToName(String constantName) {
         StringBuilder name = new StringBuilder();

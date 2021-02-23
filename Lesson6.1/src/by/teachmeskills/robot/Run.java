@@ -2,7 +2,6 @@ package by.teachmeskills.robot;
 
 import by.teachmeskills.robot.enums.PartsAndPrices;
 import by.teachmeskills.robot.factory.*;
-import by.teachmeskills.robot.interfaces.IRobotPart;
 import by.teachmeskills.robot.interfaces.IRobotPartFactory;
 import by.teachmeskills.robot.parts.RobotPart;
 
