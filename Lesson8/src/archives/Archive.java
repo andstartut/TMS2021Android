@@ -26,14 +26,4 @@ private static final int BUFFER = 1024;
             }
         }
     }
-
-    @Override
-    public void extractZip() {
-
-    }
-
-    @Override
-    public void renameZip() {
-
-    }
 }

@@ -11,6 +11,6 @@ public class TextFormatterUtil {
     }
 
     protected static int countWordsInLine(String text) {
-        return text.split("[.,:;?!\s]").length;
+        return text.split("[.,:;?!\\s]").length;
     }
 }

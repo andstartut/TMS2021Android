@@ -21,9 +21,9 @@ public class TextFormatter {
     public static String getSentenceWithThreeToFiveWords(String text) {
         String result = "";
         String[] words;
-        String[] sentences = text.split("(?<=[.:;?!])");
+        String[] sentences = text.split("(?<=[.;?!])");
         for (int i = 0; i < sentences.length; i++) {
-            words = sentences[i].split("[.,:;?!\s]+");
+            words = sentences[i].split("[.,:;?!\\s]+");
             for (String word : words) {
                 if (hasPalindrome(word)) {
                     result = result.concat(sentences[i].concat(" "));

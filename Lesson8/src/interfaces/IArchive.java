@@ -6,9 +6,4 @@ import java.util.List;
 
 public interface IArchive {
     void createZip(String path, List<File> files) throws IOException;
-
-    void extractZip();
-
-    void renameZip();
-
 }
