@@ -20,7 +20,7 @@ class AllProductsSubmenu extends Menu {
         consoleListener();
     }
 
-    public void consoleListener() {
+    private void consoleListener() {
         switch (Console.input().nextInt()) {
             case 1 -> {
                 try {

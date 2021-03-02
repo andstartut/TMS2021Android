@@ -8,7 +8,7 @@ import store.Store;
 import java.util.InputMismatchException;
 
 public class EditProductSubmenu extends Menu{
-    public EditProductSubmenu(Store store) {
+    protected EditProductSubmenu(Store store) {
         super(store);
     }
 

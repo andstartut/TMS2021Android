@@ -7,7 +7,7 @@ import store.Store;
 import java.util.InputMismatchException;
 
 public class DeleteProductSubmenu extends Menu{
-    public DeleteProductSubmenu(Store store) {
+    protected DeleteProductSubmenu(Store store) {
         super(store);
     }
 
