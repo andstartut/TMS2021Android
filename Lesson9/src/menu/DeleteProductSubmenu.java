@@ -1,0 +1,30 @@
+package menu;
+
+import exceptions.SearchProductException;
+import inputs.Console;
+import store.Store;
+
+import java.util.InputMismatchException;
+
+public class DeleteProductSubmenu extends Menu{
+    public DeleteProductSubmenu(Store store) {
+        super(store);
+    }
+
+    protected void getSubmenu() {
+        System.out.println("Input product ID what do you want to delete:");
+        consoleListener();
+    }
+
+    private void consoleListener() {
+        try {
+            store.deleteProduct(Console.getInt());
+            System.out.println("The product was deleted");
+        } catch (InputMismatchException e) {
+            System.out.println("You input wrong value");
+            Console.getString();
+        } catch (SearchProductException e) {
+            System.out.println(e);
+        }
+    }
+}

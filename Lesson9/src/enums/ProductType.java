@@ -9,7 +9,7 @@ public enum ProductType {
     VAN("VAN"),
     SPORTCAR("sportcar"),
     RACE("race");
-    String type;
+    private String type;
 
     ProductType(String type) {
         this.type = type;

@@ -3,7 +3,7 @@ package products;
 import enums.ProductType;
 
 public class Product {
-    private int id;
+    private final int id;
     private String name;
     private ProductType type;
     private int price;
@@ -49,11 +49,9 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "id=" + id +
+        return  '\n' + "id=" + id +
                 ", name='" + name + '\'' +
                 ", type=" + type.getType() +
-                ", price=" + price +
-                '}';
+                ", price=" + price;
     }
 }

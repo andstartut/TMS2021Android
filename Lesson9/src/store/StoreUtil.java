@@ -1,12 +1,11 @@
-package shop;
+package store;
 
 import exceptions.SearchProductException;
 import products.Product;
 
-import java.util.Iterator;
 import java.util.List;
 
-class ShopUtil {
+class StoreUtil {
     public static Product searchProductByID(List<Product> productList, int id) {
         for (Product product : productList) {
             if (product.getId() == id) {
@@ -17,14 +16,14 @@ class ShopUtil {
     }
 
     public static boolean isTheProductPresent(List<Product> productList, int id) {
-        boolean hasPresent = false;
-        for (Product product : productList) {
-            if (product.getId() == id) {
-                hasPresent = true;
-                break;
-            }
+        return searchProductByID(productList, id) != null;
+    }
+
+    public static List<Product> copyProductList(List<Product> productList) throws SearchProductException {
+        if (productList.isEmpty()) {
+            throw new SearchProductException("The list is empty");
         }
-        return hasPresent;
+        return List.copyOf(productList);
     }
 
 //    public static boolean searchProduct(List<Product> productList, Product product) {
