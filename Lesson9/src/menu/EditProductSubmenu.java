@@ -7,7 +7,7 @@ import store.Store;
 
 import java.util.InputMismatchException;
 
-public class EditProductSubmenu extends Menu{
+public class EditProductSubmenu extends Menu {
     protected EditProductSubmenu(Store store) {
         super(store);
     }
@@ -27,7 +27,7 @@ public class EditProductSubmenu extends Menu{
             store.editProduct(new Product(id, name, MenuProductType.giveOutTypeByCount(type), price));
             System.out.println("The product edited successfully");
         } catch (SearchProductException e) {
-            e.printStackTrace();
+            System.out.println(e);
         } catch (InputMismatchException e) {
             System.out.println("You input wrong value");
             Console.getString();

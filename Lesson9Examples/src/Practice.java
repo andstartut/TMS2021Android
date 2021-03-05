@@ -3,6 +3,7 @@ import java.util.TreeMap;
 
 public class Practice {
     String text = "мама мыла раму мамы мыла меня";
+
     public static void main(String[] args) {
 
     }

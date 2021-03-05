@@ -31,7 +31,7 @@ public class Product {
         return price;
     }
 
-//    private int setId() {
+    //    private int setId() {
 //        return Math.abs(name.hashCode() + type.hashCode());
 //    }
 

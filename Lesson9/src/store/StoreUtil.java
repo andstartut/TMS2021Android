@@ -4,9 +4,10 @@ import exceptions.SearchProductException;
 import products.Product;
 
 import java.util.List;
+import java.util.Map;
 
 class StoreUtil {
-    public static Product searchProductByID(List<Product> productList, int id) {
+    protected static Product searchProductByID(List<Product> productList, int id) {
         for (Product product : productList) {
             if (product.getId() == id) {
                 return product;
@@ -15,11 +16,11 @@ class StoreUtil {
         return null;
     }
 
-    public static boolean isTheProductPresent(List<Product> productList, int id) {
+    protected static boolean isTheProductPresent(List<Product> productList, int id) {
         return searchProductByID(productList, id) != null;
     }
 
-    public static List<Product> copyProductList(List<Product> productList) throws SearchProductException {
+    protected static List<Product> copyProductList(List<Product> productList) throws SearchProductException {
         if (productList.isEmpty()) {
             throw new SearchProductException("The list is empty");
         }

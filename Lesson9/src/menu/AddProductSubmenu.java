@@ -1,6 +1,7 @@
 package menu;
 
 import exceptions.SearchProductException;
+import exceptions.StorageException;
 import inputs.Console;
 import products.Product;
 import store.Store;
@@ -14,7 +15,7 @@ class AddProductSubmenu extends Menu {
     }
 
     protected void getSubmenu() {
-        System.out.println("Example: (id:5 name:Toyota Avensis type:sedan price:15000)");
+        System.out.println("Example: (id:5 name:Toyota Avensis type:sedan price:15000, quantity:2)");
         System.out.println("Input id:");
         try {
             int id = Console.getInt();
@@ -25,10 +26,12 @@ class AddProductSubmenu extends Menu {
             int type = Console.getInt();
             System.out.println("Input price:");
             int price = Console.getInt();
-            store.addProduct(new Product(id, name, MenuProductType.giveOutTypeByCount(type), price));
+            System.out.println("Input quantity:");
+            int quantity = Console.getInt();
+            store.addProduct(new Product(id, name, MenuProductType.giveOutTypeByCount(type), price), quantity);
             System.out.println("The product added successfully");
-        } catch (SearchProductException e) {
-            e.printStackTrace();
+        } catch (SearchProductException | StorageException e) {
+            System.out.println(e);
         } catch (InputMismatchException e) {
             System.out.println("You input wrong value");
             Console.getString();

@@ -9,6 +9,8 @@ import store.Store;
 import java.util.List;
 
 class AllProductsSubmenu extends Menu {
+    private static final int SORT_BY_PRICE = 1;
+    private static final int SORT_BY_QUEUE = 2;
     protected AllProductsSubmenu(Store store) {
         super(store);
     }
@@ -22,7 +24,7 @@ class AllProductsSubmenu extends Menu {
 
     private void consoleListener() {
         switch (Console.input().nextInt()) {
-            case 1 -> {
+            case SORT_BY_PRICE -> {
                 try {
                     System.out.println(listFilter(store.getAllProductsSortedByPrice()));
                 } catch (SearchProductException e) {
@@ -30,7 +32,7 @@ class AllProductsSubmenu extends Menu {
                     System.out.println("Please, enter a new product.");
                 }
             }
-            case 2 -> {
+            case SORT_BY_QUEUE -> {
                 try {
                     System.out.println(listFilter(store.getAllProducts()));
                 } catch (SearchProductException e) {

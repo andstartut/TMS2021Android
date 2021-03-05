@@ -1,6 +1,7 @@
 package menu;
 
 import exceptions.SearchProductException;
+import exceptions.StorageException;
 import inputs.Console;
 import store.Store;
 
