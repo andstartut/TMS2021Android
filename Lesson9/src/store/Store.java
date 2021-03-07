@@ -9,6 +9,7 @@ import java.util.*;
 
 public class Store implements IStore {
     Storage storage = new Storage();
+    Accounting accounting = new Accounting();
     List<Product> productList = new ArrayList<>();
 
     @Override
@@ -19,19 +20,6 @@ public class Store implements IStore {
         productList.add(product);
         storage.addNewProductToStorage(product.getId(), quantity);
     }
-
-//    @Override
-//    public void addProduct(List<Product> newList) throws SearchProductException {
-//        for (Product newProduct : newList) {
-//            for (Product product : productList) {
-//                if (newProduct.getId() == (product.getId())) {
-//                    throw new SearchProductException(newProduct.getName() + " is already in the list");
-//                }
-//            }
-//            productList.add(newProduct);
-//            Storage.addToStorage(newProduct.getId());
-//        }
-//    }
 
     public List<Product> getProductList() {
         return syncIdProductListAndStorage(productList, storage.getStorageOfProductsMap());
@@ -102,4 +90,7 @@ public class Store implements IStore {
         return storage;
     }
 
+    public Accounting getAccounting() {
+        return accounting;
+    }
 }

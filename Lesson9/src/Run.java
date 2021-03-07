@@ -13,11 +13,13 @@ public class Run {
         Product bugatti = new Product(2, "Bugatti Veyron", ProductType.SPORTCAR, 1500000);
         Product bmw = new Product(4, "BMW X3", ProductType.SUV, 35000);
         Product williamsF1 = new Product(1, "Williams FW14B", ProductType.RACE, 1000000);
+        Product williamsF2 = new Product(7, "Williams FW14B", ProductType.RACE, 900000);
         try {
-            store.addProduct(toyota, 5);
-            store.addProduct(bmw, 2);
+            store.addProduct(toyota, 6);
+            store.addProduct(bmw, 1);
             store.addProduct(williamsF1, 1);
             store.addProduct(bugatti, 1);
+            store.addProduct(williamsF2, 4);
         } catch (SearchProductException | StorageException e) {
             e.printStackTrace();
         }

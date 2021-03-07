@@ -12,7 +12,8 @@ public class Menu implements IMenu {
     private static final int DELETE_PRODUCTS = 4;
     private static final int EDIT_PRODUCT = 5;
     private static final int BUY_PRODUCTS = 6;
-    private static final int QUIT = 7;
+    private static final int ACCOUNTING = 7;
+    private static final int QUIT = 8;
 
     public Menu(Store store) {
         this.store = store;
@@ -27,7 +28,8 @@ public class Menu implements IMenu {
         System.out.println("4: Delete products");
         System.out.println("5: Edit product");
         System.out.println("6: Buy products");
-        System.out.println("7: Quit");
+        System.out.println("7: Accounting");
+        System.out.println("8: Quit");
         consoleListener();
     }
 
@@ -55,6 +57,10 @@ public class Menu implements IMenu {
             }
             case BUY_PRODUCTS -> {
                 new BuyProductsSubmenu(store).getSubmenu();
+                getMainMenu();
+            }
+            case ACCOUNTING -> {
+                new AccountingSubmenu(store).getSubMenu();
                 getMainMenu();
             }
             case QUIT -> System.exit(0);
