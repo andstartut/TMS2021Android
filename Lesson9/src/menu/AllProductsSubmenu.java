@@ -9,24 +9,34 @@ import store.Store;
 import java.util.List;
 
 class AllProductsSubmenu extends Menu {
-    private static final int SORT_BY_PRICE = 1;
-    private static final int SORT_BY_QUEUE = 2;
+    private static final int SORT_BY_ASCENDING = 1;
+    private static final int SORT_BY_DESCENDING = 2;
+    private static final int SORT_BY_QUEUE = 3;
     protected AllProductsSubmenu(Store store) {
         super(store);
     }
 
     protected void getSubmenu() {
         System.out.println("What kind of sorting do you want?");
-        System.out.println("1. Sort by price");
-        System.out.println("2. Sort by queue");
+        System.out.println("1. Sort by ascending order");
+        System.out.println("2. Sort by descending order");
+        System.out.println("3. Sort by queue");
         consoleListener();
     }
 
     private void consoleListener() {
         switch (Console.input().nextInt()) {
-            case SORT_BY_PRICE -> {
+            case SORT_BY_ASCENDING -> {
                 try {
-                    System.out.println(listFilter(store.getAllProductsSortedByPrice()));
+                    System.out.println(listFilter(store.getAllProductsSortedByAscending()));
+                } catch (SearchProductException e) {
+                    System.out.println(e);
+                    System.out.println("Please, enter a new product.");
+                }
+            }
+            case SORT_BY_DESCENDING -> {
+                try {
+                    System.out.println(listFilter(store.getAllProductsSortedByDescending()));
                 } catch (SearchProductException e) {
                     System.out.println(e);
                     System.out.println("Please, enter a new product.");

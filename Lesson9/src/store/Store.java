@@ -35,20 +35,30 @@ public class Store implements IStore {
                     break;
                 }
             }
-            System.out.println("Collections was synced." + id + " was deleted");
+            System.out.println("Collections was sync. Id: " + id + " was deleted");
         }
         return list;
     }
 
     @Override
     public List<Product> getAllProducts() throws SearchProductException {
+        if (getProductList().isEmpty()) {
+            throw new SearchProductException("The list is empty");
+        }
         return getProductList();
     }
 
     @Override
-    public List<Product> getAllProductsSortedByPrice() throws SearchProductException {
+    public List<Product> getAllProductsSortedByAscending() throws SearchProductException {
         List<Product> copyProductList = new ArrayList<>(StoreUtil.copyProductList(getProductList()));
         copyProductList.sort(Comparator.comparingInt(Product::getPrice));
+        return copyProductList;
+    }
+
+    @Override
+    public List<Product> getAllProductsSortedByDescending() throws SearchProductException {
+        List<Product> copyProductList = new ArrayList<>(StoreUtil.copyProductList(getProductList()));
+        copyProductList.sort(Comparator.comparingInt(Product::getPrice).reversed());
         return copyProductList;
     }
 
@@ -79,11 +89,18 @@ public class Store implements IStore {
     }
 
     @Override
-    public void editProduct(Product product) throws SearchProductException {
-        if (!deleteProduct(product.getId())) {
-            throw new SearchProductException(product.getId() + " does not exist");
+    public void editProduct(Product editedProduct) throws SearchProductException {
+        if (StoreUtil.searchProductByID(getProductList(), editedProduct.getId()) == null) {
+            throw new SearchProductException("The Product with this ID:" + editedProduct.getId() + " was not found");
+        } else {
+            for (Product product : productList) {
+                if (product.getId() == editedProduct.getId()) {
+                    product.setName(editedProduct.getName());
+                    product.setType(editedProduct.getType());
+                    product.setPrice(editedProduct.getPrice());
+                }
+            }
         }
-        productList.add(product);
     }
 
     public Storage getStorage() {

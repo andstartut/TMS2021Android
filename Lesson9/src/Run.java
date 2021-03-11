@@ -25,15 +25,5 @@ public class Run {
         }
 
         new Menu(store).getMainMenu();
-//        System.out.println(store.getAllProductsSortedByPrice());
-//        store.deleteProduct(bugatti.getId());
-//        List<Product> listProducts = new ArrayList<>();
-//        listProducts.add(new Product(4, "VW Polo", ProductType.SEDAN, 13000));
-//        listProducts.add(new Product(2, "Bugatti Veyron", ProductType.SPORTCAR, 900000));
-//        listProducts.add(new Product(5, "Alfa Romeo Gullia", ProductType.SPORTCAR, 89000));
-//        listProducts.add(new Product(3, "Toyota Avensis", ProductType.SEDAN, 15000));
-//        store.addProduct(listProducts);
-//        store.editProduct(new Product(3, "Toyota Corolla", ProductType.SEDAN, 15000));
-//        System.out.println(store.getAllProducts());
     }
 }

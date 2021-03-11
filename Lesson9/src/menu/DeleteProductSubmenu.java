@@ -1,5 +1,6 @@
 package menu;
 
+import exceptions.ConsoleException;
 import exceptions.SearchProductException;
 import exceptions.StorageException;
 import inputs.Console;
@@ -25,6 +26,8 @@ public class DeleteProductSubmenu extends Menu{
             System.out.println("You input wrong value");
             Console.getString();
         } catch (SearchProductException e) {
+            System.out.println(e);
+        } catch (ConsoleException e) {
             System.out.println(e);
         }
     }

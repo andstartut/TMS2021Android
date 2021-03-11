@@ -1,6 +1,7 @@
 package menu;
 
 import inputs.Console;
+import outputs.ListFilter;
 import products.Product;
 import store.Accounting;
 import store.Store;
@@ -32,7 +33,7 @@ public class AccountingSubmenu extends Menu {
     private void consoleListener() {
         switch (Console.input().nextInt()) {
             case PRODUCT_TYPE: {
-                System.out.println(accounting.getProductTypes(productList, storageMap));
+                System.out.println(ListFilter.arrayToList(accounting.getProductTypes(productList, storageMap).keySet()));
                 break;
             }
             case COMMON_NUMBERS_OF_PRODUCTS: {

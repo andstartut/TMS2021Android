@@ -1,5 +1,6 @@
 package menu;
 
+import exceptions.ConsoleException;
 import exceptions.SearchProductException;
 import exceptions.StorageException;
 import inputs.Console;
@@ -28,9 +29,9 @@ class AddProductSubmenu extends Menu {
             int price = Console.getInt();
             System.out.println("Input quantity:");
             int quantity = Console.getInt();
-            store.addProduct(new Product(id, name, MenuProductType.giveOutTypeByCount(type), price), quantity);
+            store.addProduct(new Product(id, name, MenuProductType.giveOutTypeByNumber(type), price), quantity);
             System.out.println("The product added successfully");
-        } catch (SearchProductException | StorageException e) {
+        } catch (SearchProductException | StorageException | ConsoleException | ArrayIndexOutOfBoundsException e) {
             System.out.println(e);
         } catch (InputMismatchException e) {
             System.out.println("You input wrong value");

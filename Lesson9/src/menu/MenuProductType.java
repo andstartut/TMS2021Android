@@ -11,7 +11,9 @@ class MenuProductType {
         }
     }
 
-    protected static ProductType giveOutTypeByCount(int numberOfType) {
+    protected static ProductType giveOutTypeByNumber(int numberOfType) throws ArrayIndexOutOfBoundsException {
+        int ArrayLength = ProductType.values().length;
+        if (numberOfType > ArrayLength) throw new ArrayIndexOutOfBoundsException();
         return ProductType.values()[numberOfType];
     }
 }

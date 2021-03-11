@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface IAccounting {
-    List<String> getProductTypes(List<Product> productList, Map<Integer, Integer> productMap);
+    Map<String, Integer> getProductTypes(List<Product> productList, Map<Integer, Integer> productMap);
 
     int getCommonNumberOfProducts(Map<Integer, Integer> productMap);
 

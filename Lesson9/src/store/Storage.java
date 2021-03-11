@@ -1,13 +1,15 @@
 package store;
 
 import exceptions.StorageException;
+import interfaces.IStorage;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Storage {
+public class Storage implements IStorage {
     private Map<Integer, Integer> storageOfProductsMap = new HashMap<>();
 
+    @Override
     public void addNewProductToStorage(int id, int count) throws StorageException {
         if (storageOfProductsMap.containsKey(id)) {
             throw new StorageException("The product with ID:" + id + " is exist");
@@ -15,6 +17,7 @@ public class Storage {
         storageOfProductsMap.put(id, count);
     }
 
+    @Override
     public void addMoreToStorage(int id, int count) throws StorageException {
         if (!storageOfProductsMap.containsKey(id)) {
             throw new StorageException("The product with this ID:" + id + " not found");
@@ -22,6 +25,7 @@ public class Storage {
         storageOfProductsMap.put(id, storageOfProductsMap.get(id) + count);
     }
 
+    @Override
     public void takeFromStorage(int id, int count) throws StorageException {
         int howMuchLeft = getCountOfProduct(id) - count;
         if (howMuchLeft < 0) {
@@ -40,6 +44,7 @@ public class Storage {
         return storageOfProductsMap.get(id);
     }
 
+    @Override
     public void deleteFromStorage(int id) {
         storageOfProductsMap.remove(id);
     }

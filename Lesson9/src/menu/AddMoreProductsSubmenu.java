@@ -1,5 +1,6 @@
 package menu;
 
+import exceptions.ConsoleException;
 import exceptions.StorageException;
 import inputs.Console;
 import store.Storage;
@@ -12,12 +13,13 @@ public class AddMoreProductsSubmenu extends Menu {
 
     protected void getSubmenu() {
         System.out.println("Input ID:");
-        int id = Console.getInt();
+        try {int id = Console.getInt();
         System.out.println("Input quantity:");
         int quantity = Console.getInt();
-        try {
-            store.getStorage().addMoreToStorage(id, quantity);
+        store.getStorage().addMoreToStorage(id, quantity);
         } catch (StorageException e) {
+            System.out.println(e);
+        } catch (ConsoleException e) {
             System.out.println(e);
         }
     }

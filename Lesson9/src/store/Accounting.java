@@ -3,7 +3,6 @@ package store;
 import interfaces.IAccounting;
 import products.Product;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,16 +10,16 @@ import java.util.Map;
 public class Accounting implements IAccounting {
 
     @Override
-    public List<String> getProductTypes(List<Product> productList, Map<Integer, Integer> productMap) {
-        List<String> typesList = new ArrayList<>();
-        for (Map.Entry<Integer, Integer> productId : productMap.entrySet()) {
-            for (Product product : productList) {
-                if (productId.getKey() == product.getId()) {
-                    typesList.add(product.getType().getType());
-                }
+    public Map<String, Integer> getProductTypes(List<Product> productList, Map<Integer, Integer> productMap) {
+        Map<String, Integer> typesMap = new HashMap<>();
+        for (Product product : productList) {
+            if (typesMap.containsKey(product.getType().getType())) {
+                typesMap.put(product.getType().getType(), typesMap.get(product.getType().getType()) + 1);
+            } else {
+                typesMap.put(product.getType().getType(), 1);
             }
         }
-        return typesList;
+        return typesMap;
     }
 
     public int getCommonNumberOfProducts(Map<Integer, Integer> productMap) {
@@ -47,21 +46,17 @@ public class Accounting implements IAccounting {
     @Override
     public void getMiddlePriceOfType(List<Product> productList, Map<Integer, Integer> productMap) {
         Map<String, Integer> counterOfNumbersType = new HashMap<>();
-        float sumOfOneId = 0F;
         for (Product product : productList) {
-            int countOfProducts = productMap.get(product.getId());
-            String productType = product.getType().getType();
-            sumOfOneId = product.getPrice() * countOfProducts;
-            if (productMap.containsKey(product.getId())) {
-                if (counterOfNumbersType.get(productType) == null) {
-                    counterOfNumbersType.put(productType, countOfProducts);
-                } else {
-                    counterOfNumbersType.put(productType, counterOfNumbersType.get(productType) + countOfProducts);
-                }
+            String type = product.getType().getType();
+            if (counterOfNumbersType.containsKey(type)) {
+                counterOfNumbersType.put(type, counterOfNumbersType.get(type) + product.getPrice());
+            } else {
+                counterOfNumbersType.put(type, product.getPrice());
+
             }
         }
         for (String keys : counterOfNumbersType.keySet()) {
-            System.out.println(keys + " = " + (int) sumOfOneId * counterOfNumbersType.get(keys));
+            System.out.println(keys + " = " + counterOfNumbersType.get(keys) / getProductTypes(productList, productMap).get(keys));
         }
     }
 }
