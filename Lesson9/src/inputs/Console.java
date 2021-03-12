@@ -13,9 +13,9 @@ public class Console {
 
     public static int getInt() throws ConsoleException {
         int value = scanner.nextInt();
-//        if (scanner.nextInt() < 0) {
-//            throw new ConsoleException("You input negative value");
-//        }
+        if (scanner.nextInt() < 0) {
+            throw new ConsoleException("You input negative value");
+        }
         scanner.nextLine();
         return value;
     }

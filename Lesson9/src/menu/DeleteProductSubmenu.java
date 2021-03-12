@@ -25,9 +25,7 @@ public class DeleteProductSubmenu extends Menu{
         } catch (InputMismatchException e) {
             System.out.println("You input wrong value");
             Console.getString();
-        } catch (SearchProductException e) {
-            System.out.println(e);
-        } catch (ConsoleException e) {
+        } catch (SearchProductException | ConsoleException e) {
             System.out.println(e);
         }
     }
