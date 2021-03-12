@@ -1,32 +1,30 @@
 package store;
 
+import enums.Goods;
+import java.util.List;
 import java.util.Random;
 
 public class Consumer extends Thread {
     private CashDesk cashDesk;
-    private static final int MAX_COUNT_OF_GOODS = 10;
+    private List<CashDesk> cashDeskList;
+    private static final int MAX_COUNT_OF_GOODS = Goods.values().length;
     private int countOfGoods;
     private Random random = new Random();
 
-    public Consumer(String name, CashDesk cashDesk) {
-        this.cashDesk = cashDesk;
-        Consumer.currentThread().setName(name);
+    public Consumer(String name) {
         this.countOfGoods = getCountOfGoods();
-        setName(name);
+        this.setName(name);
     }
 
     @Override
     public void run() {
-//        try {
-            while (countOfGoods > 0) {
-                System.out.println("The " + Consumer.currentThread().getName() + " pais for the " + countOfGoods + " goods at the cash desk");
-                countOfGoods -= cashDesk.getGoods();
-//                Thread.sleep(400);
-            }
-//        } catch (InterruptedException e) {
-//            System.out.println("interrupted");
-//        }
-
+        for (CashDesk cashDesk : cashDeskList) {
+//            if (cashDesk.getQueue() > 0) {
+////                minQueue = cashDesk.getQueue();
+//                continue;
+//            }
+            cashDesk.joinTheQueue(this);
+        }
     }
 
     private int getCountOfGoods() {
@@ -35,5 +33,17 @@ public class Consumer extends Thread {
             random.nextInt(MAX_COUNT_OF_GOODS);
         }
         return count;
+    }
+
+    public int getGoods() {
+        return getCountOfGoods();
+    }
+
+    public void chooseCashDesk(CashDesk cashDesk) {
+        this.cashDesk = cashDesk;
+    }
+
+    public void chooseCashDesk(List<CashDesk> cashDeskList) {
+        this.cashDeskList = cashDeskList;
     }
 }
