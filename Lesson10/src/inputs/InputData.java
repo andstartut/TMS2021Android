@@ -1,26 +1,26 @@
 package inputs;
 
+import store.Buyer;
 import store.CashDesk;
-import store.Consumer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class InputData {
-    private int countOfConsumer;
+    private int countOfBuyer;
     private int countOfCashDesk;
 
-    public InputData(int countOfConsumer, int countOfCashDesk) {
-        this.countOfConsumer = countOfConsumer;
+    public InputData(int countOfBuyer, int countOfCashDesk) {
+        this.countOfBuyer = countOfBuyer;
         this.countOfCashDesk = countOfCashDesk;
     }
 
-    public List<Consumer> getConsumerList() {
-        List<Consumer> consumerList = new ArrayList<>();
-        for (int i = 1; i <= countOfConsumer; i++) {
-            consumerList.add(new Consumer("Consumer_" + i));
+    public List<Buyer> getConsumerList() {
+        List<Buyer> buyerList = new ArrayList<>();
+        for (int i = 1; i <= countOfBuyer; i++) {
+            buyerList.add(new Buyer("Buyer" + i));
         }
-        return consumerList;
+        return buyerList;
     }
 
     public List<CashDesk> getCashDeskList() {
